@@ -1,42 +1,102 @@
-let valuesList = ['rock', 'paper', 'scissors']
+const para = document.querySelector('p')
 
-function getComputerChoice(){
-    return valuesList[Math.floor(Math.random() * valuesList.length)]
+
+// Assign the values we use in the programs in a list
+let valuesList = ["rock", "paper", "scissors"];
+let computerPoints, playerPoints;
+youwin = false;
+
+// play full rock , paper, scissors first to five
+rockPaperScissors();
+switch (youwin){
+  case 1: value = 'You Won';
+  break;
+  case -1: value = 'You Lost'
+  break
+  default: value = 'You didn\'t play'
 }
 
-function getStrengthOrder(playerSelection){
-    playerSelection = playerSelection.toLowerCase()
-    let myList;
-   if (playerSelection === 'rock'){
-    // switch(computerSelection){
-    //     case 'rock': return aTie('rock')
-    //     case 'paper':  return youLose('rock', 'paper')
-    //     case 'scissors': return youWin('rock', 'scissors')
-    // }   
-    myList = ['rock', 'scissors', 'paper']
-   }
-   else if (playerSelection === 'paper'){
-    myList = ['paper', 'rock', 'scissors']
-   }
-   else if (playerSelection === 'scissors'){
-    myList = ['scissors', 'paper', 'rock']
-   } 
-   return myList
+para.textContent = value
+
+function rockPaperScissors() {
+    
+  computerPoints = 0;
+  playerPoints = 0;
+  while (true) {
+    // get player choice
+    let playerSelection = prompt("Enter your selection");
+    if (playerSelection) playerSelection = playerSelection.toLowerCase();
+
+    // get computer's choice
+    let computerSelection = getComputerChoice();
+
+   
+    value = playRound(playerSelection, computerSelection);
+
+    if (value == undefined) {
+      console.log("Game Cancelled or no value supplied");
+      break;
+    }
+  
+    switch (value) {
+      case 1:
+        playerPoints += 1;
+        break;
+      case -1:
+        computerPoints += 1;
+        break;
+    }
+
+    console.log(
+      `You - ${playerPoints} points.  Computer - ${computerPoints} points`
+    );
+    if (playerPoints == 5) {
+      youwin = 1;
+      break;
+    } else if (computerPoints == 5) {
+      youwin = -1
+      break;
+    }
+  }
 }
 
-function playRound(playerSelection, computerSelection){
-    let youWin = (value1, value2) => `You won!!. ${value1} beats ${value2}`;
-   let youLose = (value1, value2) => `You lose!!. ${value2} beats ${value1}`;
-   let aTie = (value1) => `You both chose ${value1}. it's a tie`;
-   let orderList = getStrengthOrder(playerSelection)
-   switch (computerSelection){
-       case orderList[0]: return aTie(playerSelection);
-       case orderList[1]: return youWin(playerSelection, computerSelection)
-       case orderList[2]: return youLose(playerSelection, computerSelection)
-        default: return 'You entered an invalid selection'
-    } 
+function getComputerChoice() {
+  return valuesList[Math.floor(Math.random() * valuesList.length)];
 }
 
-let playerSelection = prompt('Enter your selection').toLowerCase()
-let computerSelection = getComputerChoice()
-console.log(playRound(playerSelection, computerSelection))
+function playRound(playerSelection, computerSelection) {
+  let youWin = (value1, value2) => `You won!!. ${value1} beats ${value2}`;
+  let youLose = (value1, value2) => `You lose!!. ${value2} beats ${value1}`;
+  let aTie = (value1) => `You both chose ${value1}. it's a tie`;
+  let orderList = getStrengthOrder(playerSelection);
+  if (!orderList) return undefined;
+
+  switch (computerSelection) {
+    case orderList[0]:
+      console.log(aTie(playerSelection));
+      return 0;
+    case orderList[1]:
+      console.log(youWin(playerSelection, computerSelection));
+      return 1;
+    case orderList[2]:
+      console.log(youLose(playerSelection, computerSelection));
+      return -1;
+    default:
+      console.log("You entered an invalid selection");
+      console.log("Enter 'rock', 'paper' or 'scissors' ")
+      return 0;
+  }
+}
+
+function getStrengthOrder(playerSelection) {
+  if (!playerSelection) return null;
+  let myList = [];
+  if (playerSelection === "rock") {
+    myList = ["rock", "scissors", "paper"];
+  } else if (playerSelection === "paper") {
+    myList = ["paper", "rock", "scissors"];
+  } else if (playerSelection === "scissors") {
+    myList = ["scissors", "paper", "rock"];
+  }
+  return myList;
+}
