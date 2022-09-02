@@ -1,4 +1,6 @@
 const para = document.querySelector('p')
+const restart = document.querySelector('.nothing')
+
 
 
 // Assign the values we use in the programs in a list
@@ -16,6 +18,7 @@ switch (youwin){
   default: value = 'You didn\'t play'
 }
 
+para.style.display = 'block'
 para.textContent = value
 
 function rockPaperScissors() {
