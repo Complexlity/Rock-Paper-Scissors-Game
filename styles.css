@@ -1,4 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink&family=Bungee+Spice&display=swap');
+:root{
+    --primary-color: #756916;
+    --accent-color1: hsl(52, 91%, 17%);
+    --accent-color2: hsl(52, 91%, 37%);
+    --accent-color3: hsl(52, 91%, 57%);
+}
+
 * {
+    
     margin:0;
     padding:0;
     box-sizing: border-box;
@@ -7,9 +16,7 @@
 body {
     min-height:100vh;
     text-align: center;
-    /* background-image: url('background.jpg');
-    background-size:cover;
-    background-position: top left; */
+    background-color:var(--primary-color)
 }
 
 .container{
@@ -20,6 +27,15 @@ body {
     min-height:100vh;
 }
 
+h1{
+    font-family: 'Bungee Spice', cursive;
+    font-size: 4rem;
+}
+
+.message{
+    font-family: 'Aref Ruqaa Ink', serif;
+    font-size:3rem;
+}
 .play-area {
     display:grid;
     grid-template-columns: 4fr 1fr;
@@ -28,6 +44,9 @@ body {
     width:100%;    
 }
 
+.scores {
+    font-size: 2rem;
+}
 
 .score__header {
     padding-block: 20px;
@@ -75,18 +94,20 @@ body {
 [data-choice]{
     border:1px solid hsl(0, 0%, 50%);
     border-radius: 9px;
-    /* background-color:orange; */
+    background-color:var(--accent-color1);
     width:200px;
     padding:1rem;
     scale:0.97;
 }
 
 .started {
-    transition: scale .3s
+    transition: scale .3s;
+    background-color:var(--accent-color2);
 }
 
 .started:hover, .started:focus {
     scale:1.03;
+    background-color: var(--accent-color3);
     box-shadow: 0px 0px 5px 2px hsl(0, 0%, 20%) ;
 }
 
