@@ -31,6 +31,10 @@ body {
     outline:1px solid black;
 }
 
+.score__header {
+    padding-block: 20px;
+    background: red;
+}
 .score__tiles {
     display:grid;
     grid-template-columns: 1fr 1fr;
@@ -81,8 +85,12 @@ body {
     scale:0.97;
 }
 
+.started {
+    transition: scale .3s
+}
+
 .started:hover, .started:focus {
-    scale:1;
+    scale:1.03;
 }
 
 img {

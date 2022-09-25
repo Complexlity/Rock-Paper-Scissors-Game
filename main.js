@@ -4,25 +4,31 @@ const selections = document.querySelectorAll('[data-choice]')
 const valuesList = ["rock", "paper", "scissors"];
 const playerPoints = document.querySelector('.score__individual')
 const computerPoints = document.querySelector('.score__computer')
+const playerTile = document.querySelector('.player__tile')
+const computerTile = document.querySelector('.computer__tile')
 const message = document.querySelector('.message')
-youwin = false;
+hasStarted = false;
 let highestScore;
 let winnerNode;
 
 
 start.addEventListener('click', (e) => {
   let playButton = e.target
-  if (playButton.innerText == 'Click To Start') startGame(playButton)
+  if (!hasStarted) startGame(playButton)
   else endGame(playButton)
 })
   
 
 function startGame(playButton) {
-
+  hasStarted = true
   playerPoints.innerText = computerPoints.innerHTML = 0
+  playerTile.style.backgroundColor = 'unset'
+  computerTile.style.backgroundColor = 'unset'
+  start.classList.remove('ended')
+
   playButton.innerText = 'END GAME'
   message.innerText = 'Choose your weapon'
-  start.classList.remove('ended')
+  
   selections.forEach(selection => {
     selection.classList.add('started')
     selection.addEventListener('click', rockPaperScissors)
@@ -30,7 +36,8 @@ function startGame(playButton) {
 }
 
 function endGame(playButton){
-  playButton.innerText = 'Click To Start'
+  hasStarted = false
+  playButton.innerText = 'Restart'
   message.innerText = 'Click Start to begin game'
   start.classList.add('ended')
   if (highestScore == 5){
