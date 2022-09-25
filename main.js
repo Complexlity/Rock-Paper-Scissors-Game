@@ -16,6 +16,7 @@ start.addEventListener('click', (e) => {
   let playButton = e.target
   if (!hasStarted) startGame(playButton)
   else endGame(playButton)
+  playButton.classList.toggle('end_button')
 })
   
 
@@ -27,7 +28,7 @@ function startGame(playButton) {
   start.classList.remove('ended')
 
   playButton.innerText = 'END GAME'
-  message.innerText = 'Choose your weapon'
+  message.innerHTML = 'Choose your weapon <img src="weapon.png"/>'
   
   selections.forEach(selection => {
     selection.classList.add('started')
