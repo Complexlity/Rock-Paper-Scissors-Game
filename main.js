@@ -11,7 +11,7 @@ let highestScore;
 
 start.addEventListener('click', (e) => {
   let playButton = e.target
-  if (playButton.innerText == 'START GAME') startGame(playButton)
+  if (playButton.innerText == 'Click To Start') startGame(playButton)
   else endGame(playButton)
 })
   
@@ -26,7 +26,7 @@ function startGame(playButton) {
 }
 
 function endGame(playButton){
-  playButton.innerText = 'START GAME'
+  playButton.innerText = 'Click To Start'
   message.innerText = 'Click Start to begin game'
   if (highestScore == 5){
     message.innerHTML = getWinner(playerPoints.innerText, computerPoints.innerText)

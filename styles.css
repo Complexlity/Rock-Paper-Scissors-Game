@@ -32,3 +32,43 @@ body {
     grid-template-columns: 1fr 1fr;
     padding-top: 10px;;
 }
+
+.start_game {
+    width:100px;
+    height:50px;
+    border-radius:100vw;
+    border:none;
+}
+
+.choices {
+    display:grid;
+    background-color:blue;
+    grid-template-columns: repeat(3, 1fr);
+    gap:20px;
+    justify-items: center;
+    width: 100%;
+    height:200px;
+    max-width:1000px;
+    margin:5rem auto;
+    
+
+
+
+}
+
+[data-choice]{
+    border:1px solid gray;
+    border-radius: 9px;
+    background-color:orange;
+    width:200px;
+    padding:1rem;
+    scale:0.97;
+}
+
+[data-choice]:hover, [data-choice]:focus {
+    scale:1;
+}
+
+img {
+    width:100%;
+}
