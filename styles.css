@@ -10,27 +10,32 @@ body {
     text-align: center;
 }
 
-.container {
-    display:grid;
-    grid-template-columns: 4fr 1fr;
-    justify-content: end;
+.container{
     width:100%;
     padding-top:100px;
     margin:0 auto;
     max-width:1200px;
     min-height:100vh;
     background-color:rgb(170, 71, 71);
-    
 }
 
-.container > * {
+.play-area {
+    display:grid;
+    grid-template-columns: 4fr 1fr;
+    justify-content: end;
+    margin-top:50px;
+    width:100%;    
+}
+
+.play-area > * {
     outline:1px solid black;
 }
 
 .score__tiles {
     display:grid;
     grid-template-columns: 1fr 1fr;
-    padding-top: 10px;;
+    padding-top: 10px;
+    gap:3px;
 }
 
 .start_game {
@@ -38,6 +43,17 @@ body {
     height:50px;
     border-radius:100vw;
     border:none;
+}
+
+.ended {
+    animation: blinking 1.6s linear infinite
+}
+
+@keyframes blinking {
+    50% {
+        scale:1.05;
+        background-color:blue;
+    }    
 }
 
 .choices {
@@ -65,7 +81,7 @@ body {
     scale:0.97;
 }
 
-[data-choice]:hover, [data-choice]:focus {
+.started:hover, .started:focus {
     scale:1;
 }
 

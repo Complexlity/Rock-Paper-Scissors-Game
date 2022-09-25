@@ -12,28 +12,34 @@
 
 <body>
   <div class="container">
-  <div class="game">
-    <div class="message">Click Start to begin game</div>
-    <div class="choices">
-      
-      <div  data-choice = 'rock'><img src="stone.png" alt=""></div>
-      <div data-choice = 'paper'><img src="paper.png" alt=""></div>
-      <div data-choice = 'scissors'><img src="scissors.png" alt=""></div>
-    </div>
-    <button class="start_game">Click To Start</button>
-  </div>
-  <div class="scores">
-    <div class="score__header">Scores</div>
-    <div class="score__tiles">
-      <div class="score__both">
-        <p>Player</p>
-        <p class="score__individual">0</p>
+    <h1>ROCK PAPER SCISSORS</h1>
+<div class="play-area">
+  
+      <div class="game">
+      <div class="message">Click Start to begin game</div>
+      <div class="choices">
+  
+        <div  data-choice = 'rock'><img src="stone.png" alt=""></div>
+        <div data-choice = 'paper'><img src="paper.png" alt=""></div>
+        <div data-choice = 'scissors'><img src="scissors.png" alt=""></div>
       </div>
-      <div>
-        <p>Computer</p>
-        <p class="score__computer">0</p>
-      </div>
+      <button class="start_game ended">Click To Start</button>
     </div>
+  
+    <div class="scores">
+      <div class="score__header">Scores</div>
+      <div class="score__tiles">
+        <div class="player__tile">
+          <p>Player</p>
+          <p class="score__individual">0</p>
+        </div>
+        <div class="computer__tile">
+          <p>Computer</p>
+          <p class="score__computer">0</p>
+        </div>
+      </div>
+  
+</div>
   </div> 
 </div>
 </body>

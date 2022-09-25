@@ -7,6 +7,7 @@ const computerPoints = document.querySelector('.score__computer')
 const message = document.querySelector('.message')
 youwin = false;
 let highestScore;
+let winnerNode;
 
 
 start.addEventListener('click', (e) => {
@@ -17,10 +18,13 @@ start.addEventListener('click', (e) => {
   
 
 function startGame(playButton) {
+
   playerPoints.innerText = computerPoints.innerHTML = 0
   playButton.innerText = 'END GAME'
   message.innerText = 'Choose your weapon'
+  start.classList.remove('ended')
   selections.forEach(selection => {
+    selection.classList.add('started')
     selection.addEventListener('click', rockPaperScissors)
 })
 }
@@ -28,10 +32,12 @@ function startGame(playButton) {
 function endGame(playButton){
   playButton.innerText = 'Click To Start'
   message.innerText = 'Click Start to begin game'
+  start.classList.add('ended')
   if (highestScore == 5){
     message.innerHTML = getWinner(playerPoints.innerText, computerPoints.innerText)
   }
   selections.forEach(selection => {
+    selection.classList.remove('started')
     selection.removeEventListener('click', rockPaperScissors)
 })
 }
@@ -52,23 +58,24 @@ function endGame(playButton){
 
 
 function rockPaperScissors() {
-    
-  
    playerSelection = this.dataset.choice
   computerSelection = getComputerChoice()
     value = playRound(playerSelection, computerSelection);
     switch (value) {
       case 1:
         highestScore = playerPoints.innerText = parseInt(playerPoints.innerText) + 1;
+        winnerNode = playerPoints
         break;
-      case -1:
-        
+      case -1:  
       highestScore = computerPoints.innerText = parseInt(computerPoints.innerText) + 1 ;
-        break;
+      winnerNode = computerPoints  
+      break;
     }
-      if (highestScore == 5) endGame(start)
-  }
-
+      if (highestScore == 5) {
+        endGame(start)
+        winnerNode.parentElement.style.backgroundColor = 'hsl(135, 100%, 50%)'
+      }
+}
 
 
 function getComputerChoice() {
