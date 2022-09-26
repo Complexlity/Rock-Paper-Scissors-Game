@@ -40,7 +40,6 @@ function endGame(playButton){
   playButton.innerText = 'Restart'
   message.innerText = 'Click Start to begin game'
   start.classList.add('ended')
-  console.log(playButton.classList)
   start.classList.remove('end_button')
 
   if (highestScore == 5){
