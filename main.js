@@ -16,7 +16,6 @@ start.addEventListener('click', (e) => {
   let playButton = e.target
   if (!hasStarted) startGame(playButton)
   else endGame(playButton)
-  playButton.classList.toggle('end_button')
 })
   
 
@@ -26,7 +25,7 @@ function startGame(playButton) {
   playerTile.style.backgroundColor = 'unset'
   computerTile.style.backgroundColor = 'unset'
   start.classList.remove('ended')
-
+  start.classList.add('end_button')
   playButton.innerText = 'END GAME'
   message.innerHTML = 'Choose your weapon <img src="weapon.png"/>'
   
@@ -41,6 +40,9 @@ function endGame(playButton){
   playButton.innerText = 'Restart'
   message.innerText = 'Click Start to begin game'
   start.classList.add('ended')
+  console.log(playButton.classList)
+  start.classList.remove('end_button')
+
   if (highestScore == 5){
     message.innerHTML = getWinner(playerPoints.innerText, computerPoints.innerText)
   }
