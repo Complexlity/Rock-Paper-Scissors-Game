@@ -20,6 +20,7 @@ start.addEventListener('click', (e) => {
   
 
 function startGame(playButton) {
+  highestScore = 0;
   hasStarted = true
   playerPoints.innerText = computerPoints.innerHTML = 0
   playerTile.style.backgroundColor = 'unset'
