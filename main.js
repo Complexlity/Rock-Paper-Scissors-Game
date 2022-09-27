@@ -1,3 +1,4 @@
+// Variable Declarations
 const restart = document.querySelector('button')
 const start = document.querySelector('.start_game')
 const selections = document.querySelectorAll('[data-choice]')
@@ -12,6 +13,7 @@ let highestScore;
 let winnerNode;
 
 
+// Start the game
 start.addEventListener('click', (e) => {
   let playButton = e.target
   if (!hasStarted) startGame(playButton)
@@ -19,6 +21,7 @@ start.addEventListener('click', (e) => {
 })
   
 
+// When game is on
 function startGame(playButton) {
   highestScore = 0;
   hasStarted = true
@@ -36,6 +39,8 @@ function startGame(playButton) {
 })
 }
 
+
+// When game is ended
 function endGame(playButton){
   hasStarted = false
   playButton.innerText = 'Restart'
@@ -52,21 +57,7 @@ function endGame(playButton){
 })
 }
 
-
-
-
-
-
-
-
-
-
-
-// Assign the values we use in the programs in a list
-
-
-
-
+// One round of game
 function rockPaperScissors() {
    playerSelection = this.dataset.choice
   computerSelection = getComputerChoice()
@@ -81,6 +72,8 @@ function rockPaperScissors() {
       winnerNode = computerPoints  
       break;
     }
+
+    // First to reach 5 wins
       if (highestScore == 5) {
         endGame(start)
         winnerNode.parentElement.style.backgroundColor = 'hsl(135, 100%, 50%)'
@@ -88,10 +81,12 @@ function rockPaperScissors() {
 }
 
 
+// Computer selections
 function getComputerChoice() {
   return valuesList[Math.floor(Math.random() * valuesList.length)];
 }
 
+// Using the choices, determine the winnner
 function playRound(playerSelection, computerSelection) {
   let youWin = (value1, value2) => `You won!!. ${value1} beats ${value2}`;
   let youLose = (value1, value2) => `You lose!!. ${value2} beats ${value1}`;
@@ -127,6 +122,6 @@ function getStrengthOrder(playerSelection) {
 
 function getWinner(player, computer) {
   let result = player > computer ? 'Winner!!! 🕺🕺. Click start to play again'
-  : 'Game over 😞😞. Click start to try again'
+  : 'Game over 😞😞. Click Restart to try again'
   return result
 }
